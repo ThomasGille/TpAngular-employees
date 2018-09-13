@@ -7,7 +7,6 @@ import { SharedService } from '../services/shared.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  private isConnected: boolean;
 
   constructor(private sharedService: SharedService) { }
 
