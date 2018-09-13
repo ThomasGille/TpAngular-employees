@@ -10,13 +10,16 @@ import { SharedService } from './services/shared.service';
 import { HomeComponent } from './home/home.component';
 import { LoginService } from './services/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { EmployeesComponent } from './employees/employees.component';
+import { EmployeeService } from './services/employee.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    EmployeesComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     SharedService,
-    LoginService
+    LoginService,
+    EmployeeService
   ],
   bootstrap: [AppComponent]
 })

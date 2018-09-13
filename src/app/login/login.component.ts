@@ -10,8 +10,8 @@ import { User } from '../models/user';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  userlogin: string;
-  userpwd: String;
+  userlogin = 'admin';
+  userpwd = 'secret';
   error: String;
   title: String = 'Connexion';
   private user: User;
