@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../services/shared.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,18 @@ import { SharedService } from '../services/shared.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private sharedService: SharedService) { }
+  constructor(
+    private sharedService: SharedService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
   }
 
   login () {
-    console.log("login");
+    console.log('login');
     this.sharedService.isConnected = true;
+    this.router.navigate(['/home']);
   }
 
 }
