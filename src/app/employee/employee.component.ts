@@ -7,8 +7,6 @@ import { EmployeeService } from '../services/employee.service';
 import { CommonService } from '../services/common.service';
 
 import { Employee } from '../models/employee';
-import { Job } from '../models/job';
-import { Departement } from '../models/departement';
 
 @Component({
   selector: 'app-employee',
@@ -20,8 +18,6 @@ export class EmployeeComponent implements OnInit {
   emp_id: number;
   title: string;
   error: string;
-  jobs: Job [];
-  departements: Departement [];
 
   constructor(
     private router: Router,
@@ -39,21 +35,6 @@ export class EmployeeComponent implements OnInit {
     } else {
       this.title = 'Ajouter un employé';
     }
-    this.getDepartements();
-    this.getJobs();
-  }
-  getJobs(): any {
-    this.commonService.getJobs().subscribe(
-      (data) => { this.jobs = data; },
-      (error) => { this.error = error.message; }
-    );
-  }
-
-  getDepartements(): any {
-    this.commonService.getDepartements().subscribe(
-      (data) => { this.departements = data; },
-      (error) => { this.error = error.message; }
-    );
   }
 
   getEmployee(emp_id: number): any {
@@ -92,6 +73,14 @@ export class EmployeeComponent implements OnInit {
     } else {
       this.router.navigate(['home']);
     }
+  }
+
+  jobSelected(job_id: string) {
+    this.employee.job_id = Number.parseInt(job_id);
+  }
+
+  depSelected(dep_id: string) {
+    this.employee.department_id = Number.parseInt(dep_id);
   }
 
 }
