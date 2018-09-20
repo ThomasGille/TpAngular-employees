@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Employee } from '../models/employee';
 import { EmployeeService } from '../services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -12,7 +13,10 @@ export class EmployeesComponent implements OnInit {
   title: string;
   error: string;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(
+    private employeeService: EmployeeService,
+    private router: Router
+    ) { }
 
   ngOnInit() {
     this.title = 'Liste des employés';
@@ -24,7 +28,10 @@ export class EmployeesComponent implements OnInit {
     }, (error) => {
       this.error = error.message;
     });
+  }
 
+  detail(id: number) {
+    this.router.navigate(['employee', id]);
   }
 
 }

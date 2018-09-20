@@ -12,6 +12,8 @@ import { LoginService } from './services/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeService } from './services/employee.service';
+import { CommonService } from './services/common.service';
+import { EmployeeComponent } from './employee/employee.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { EmployeeService } from './services/employee.service';
     MenuComponent,
     LoginComponent,
     HomeComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { EmployeeService } from './services/employee.service';
   providers: [
     SharedService,
     LoginService,
-    EmployeeService
+    EmployeeService,
+    CommonService
   ],
   bootstrap: [AppComponent]
 })
