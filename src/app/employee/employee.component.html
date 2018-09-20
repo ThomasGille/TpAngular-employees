@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="form-group">
-      <app-department [department_id]="employee.department_id"></app-department>
+      <app-department [department_id]="employee.department_id" (choose)="depSelected($event)"></app-department>
     </div>
     <div class="form-group">
       <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">

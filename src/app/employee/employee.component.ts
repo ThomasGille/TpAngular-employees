@@ -79,4 +79,8 @@ export class EmployeeComponent implements OnInit {
     this.employee.job_id = Number.parseInt(job_id);
   }
 
+  depSelected(dep_id: string) {
+    this.employee.department_id = Number.parseInt(dep_id);
+  }
+
 }

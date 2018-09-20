@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 import { Job } from '../models/job';
 import { CommonService } from '../services/common.service';
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-job',

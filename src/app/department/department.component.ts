@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { CommonService } from '../services/common.service';
 import { Departement } from '../models/departement';
 
@@ -9,6 +9,7 @@ import { Departement } from '../models/departement';
 })
 export class DepartmentComponent implements OnInit {
   @Input() department_id: number;
+  @Output() choose = new EventEmitter();
   departements: Departement [];
   error: any;
 
@@ -25,4 +26,8 @@ export class DepartmentComponent implements OnInit {
     );
   }
 
+  onChange(value: string) {
+    this.department_id = +value;
+    this.choose.emit(value);
+  }
 }
