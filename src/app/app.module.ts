@@ -14,6 +14,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeService } from './services/employee.service';
 import { CommonService } from './services/common.service';
 import { EmployeeComponent } from './employee/employee.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EmployeeComponent } from './employee/employee.component';
     LoginComponent,
     HomeComponent,
     EmployeesComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
