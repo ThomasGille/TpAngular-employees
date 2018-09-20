@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Employee } from '../models/employee';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
+
+
 import { EmployeeService } from '../services/employee.service';
 import { CommonService } from '../services/common.service';
+
+import { Employee } from '../models/employee';
 import { Job } from '../models/job';
 import { Departement } from '../models/departement';
 
@@ -21,6 +25,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private location: Location,
     private activatedRoute: ActivatedRoute,
     private employeeService: EmployeeService,
     private commonService: CommonService ) { }
@@ -28,8 +33,12 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.employee = new Employee();
     this.emp_id = +this.activatedRoute.snapshot.paramMap.get('employee_id');
-    this.title = 'Modifier un employé';
-    this.getEmployee(this.emp_id);
+    if (this.emp_id > 0) {
+      this.title = 'Modifier un employé';
+      this.getEmployee(this.emp_id);
+    } else {
+      this.title = 'Ajouter un employé';
+    }
     this.getDepartements();
     this.getJobs();
   }
@@ -55,11 +64,34 @@ export class EmployeeComponent implements OnInit {
   }
 
   public validateEmployee(id: number) {
-    // TODO
+    if (id > 0) {
+      if (isNaN(this.employee.job_id)) {
+        this.error = 'VOus devez selectionnez une job !';
+      } else {
+        if (isNaN(this.employee.department_id)) {
+          this.error = 'VOus devez selectionnez un département !';
+        } else {
+          this.employeeService.updateEmployee(this.employee).subscribe(
+            () => { this.router.navigate(['/employees']); },
+            (error) => { this.error = error.message; },
+          );
+        }
+      }
+    } else {
+      this.employeeService.addEmployee(this.employee).subscribe(
+        () => {},
+        (error) => { this.error = error.message; },
+        () => { this.router.navigate(['/employees']); }
+      );
+    }
   }
 
   public cancel(id: number) {
-    // TODO
+    if (id > 0) {
+      this.location.back();
+    } else {
+      this.router.navigate(['home']);
+    }
   }
 
 }

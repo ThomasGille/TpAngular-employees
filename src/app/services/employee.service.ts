@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Employee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root'
@@ -16,5 +17,17 @@ export class EmployeeService {
 
   public getEmployee(id: number): Observable<any> {
     return this.http.get(this.baseUrl + 'getEmployee' + '/' + id);
+  }
+
+  public updateEmployee(emp: Employee): Observable<any> {
+    return this.http.put(this.baseUrl + 'updateEmployee', JSON.stringify(emp));
+  }
+
+  public addEmployee(emp: Employee): Observable<any> {
+    return this.http.post(this.baseUrl + 'addEmployee', JSON.stringify(emp));
+  }
+
+  public deleteEmployee(id: number): Observable<any> {
+    return this.http.delete(this.baseUrl + 'deleteEmployee' + '/' + id);
   }
 }

@@ -34,4 +34,12 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(['employee', id]);
   }
 
+  delete(id: number) {
+    this.employeeService.deleteEmployee(id).subscribe(
+      () => {},
+      (error) => { this.error = error.message; },
+      () => { this.getEmployees(); }
+    );
+  }
+
 }
