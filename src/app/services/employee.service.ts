@@ -19,6 +19,10 @@ export class EmployeeService {
     return this.http.get(this.baseUrl + 'getEmployeesByJob/' + job_id);
   }
 
+  getEmployeeByDep(dep_id: number): any {
+    return this.http.get(this.baseUrl + 'getEmployeesByDep/' + dep_id);
+  }
+
   public getEmployee(id: number): Observable<any> {
     return this.http.get(this.baseUrl + 'getEmployee' + '/' + id);
   }
