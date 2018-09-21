@@ -23,4 +23,8 @@ export class ListByJobComponent implements OnInit {
     this.router.navigate(['employees', 'job', id]);
   }
 
+  reload() {
+    this.router.navigate(['employees', 'job', this.job_id]);
+  }
+
 }

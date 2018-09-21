@@ -7,6 +7,7 @@ import { EmployeeService } from '../services/employee.service';
 import { CommonService } from '../services/common.service';
 
 import { Employee } from '../models/employee';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-employee',
@@ -24,7 +25,7 @@ export class EmployeeComponent implements OnInit {
     private location: Location,
     private activatedRoute: ActivatedRoute,
     private employeeService: EmployeeService,
-    private commonService: CommonService ) { }
+    private sharedService: SharedService ) { }
 
   ngOnInit() {
     this.employee = new Employee();
@@ -53,7 +54,7 @@ export class EmployeeComponent implements OnInit {
           this.error = 'VOus devez selectionnez un département !';
         } else {
           this.employeeService.updateEmployee(this.employee).subscribe(
-            () => { this.router.navigate(['/employees']); },
+            () => { this.router.navigate([this.sharedService.getOriginalUrl()]); },
             (error) => { this.error = error.message; },
           );
         }

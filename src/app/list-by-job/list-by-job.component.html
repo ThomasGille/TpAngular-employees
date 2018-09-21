@@ -3,7 +3,7 @@
 
   <form class="form-horizontal" role="form" name="empByJobForm">
     <div class="form-group">
-      <app-job [job_id]="job_id" (choose)='jobSelected($event)'></app-job>
+      <app-job [job_id]="job_id" (reload)="reload()" (choose)='jobSelected($event)'></app-job>
     </div>
     <app-error [error]="error"></app-error>
   </form>

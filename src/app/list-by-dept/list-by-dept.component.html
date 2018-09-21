@@ -8,7 +8,7 @@
   </form>
 
   <div *ngIf="department_id > 0">
-    <app-employee-list [employees]="employees"></app-employee-list>
+    <app-employee-list [employees]="employees" (reload)="reload()"></app-employee-list>
   </div>
 
   <app-error [error]="error"></app-error>

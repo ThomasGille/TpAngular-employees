@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'employees/job', component: ListByJobComponent},
   { path: 'employees/job/:job_id', component: EmployeesComponent},
   { path: 'employees/dep', component: ListByDeptComponent},
+  { path: 'employees/dep/:department_id', component: ListByDeptComponent},
   { path: 'employee/:employee_id', component: EmployeeComponent },
   { path: 'employee', component: EmployeeComponent }
 
