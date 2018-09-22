@@ -20,6 +20,7 @@ import { DepartmentComponent } from './department/department.component';
 import { ListByJobComponent } from './list-by-job/list-by-job.component';
 import { EmployeeListComponent } from './employee-list/employee-list.component';
 import { ListByDeptComponent } from './list-by-dept/list-by-dept.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ListByDeptComponent } from './list-by-dept/list-by-dept.component';
     SharedService,
     LoginService,
     EmployeeService,
-    CommonService
+    CommonService,
+    AuthGuard,
   ],
   bootstrap: [AppComponent]
 })
